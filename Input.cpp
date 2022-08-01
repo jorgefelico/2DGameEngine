@@ -1,10 +1,10 @@
 #include "Input.h"
 #include "Screen.h"
-#include <GLFW/glfw3.h>
 #include <iostream>
 #include <string.h>
 
-Input::Input() {
+Input::Input()
+{ 
 	m_key = 0;
 	m_isXClicked = false;
 	m_isKeyPressed = false;
@@ -14,84 +14,105 @@ Input::Input() {
 	m_mousePositionY = 0;
 	m_mouseMotionX = 0;
 	m_mouseMotionY = 0;
-		
-	glfwSetKeyCallback(Screen::Instance()->window,KeyboardCallback);
+
+	glfwSetKeyCallback(Screen::Instance()->window, KeyboardCallback);
 	glfwSetMouseButtonCallback(Screen::Instance()->window, MouseButtonCallback);
 	glfwSetCursorPosCallback(Screen::Instance()->window, MousePositionCallback);
 };
 
-Input* Input::Instance() {
-	static Input* inputObject = new Input();
+Input *Input::Instance()
+{
+	static Input *inputObject = new Input();
 	return inputObject;
 }
 
-void Input::Update() {
+void Input::Update()
+{
 	glfwPollEvents();
 }
 
-bool Input::IsXClicked(){
+bool Input::IsXClicked()
+{
 	return m_isXClicked;
 }
 
-bool Input::IsKeyPressed(){
+bool Input::IsKeyPressed()
+{
 	return m_isKeyPressed;
 }
 
-int Input::GetKey(){
+int Input::GetKey()
+{
 	return m_key;
 }
 
-bool Input::IsLeftButtonClicked(){
+bool Input::IsLeftButtonClicked()
+{
 	return m_isLeftButtonClicked;
 }
 
-bool Input::IsRightButtonClicked(){
+bool Input::IsRightButtonClicked()
+{
 	return m_isRightButtonClicked;
 }
 
-double Input::GetMousePositionX(){
+double Input::GetMousePositionX()
+{
 	return m_mousePositionX;
 }
 
-double Input::GetMousePositionY(){
+double Input::GetMousePositionY()
+{
 	return m_mousePositionY;
 }
 
-int Input::GetMouseMotionX(){
+int Input::GetMouseMotionX()
+{
 	return m_mouseMotionX;
 }
 
-int Input::GetMouseMotionY(){
+int Input::GetMouseMotionY()
+{
 	return m_mouseMotionY;
 }
 
-void Input::KeyboardCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
+void Input::KeyboardCallback(GLFWwindow *window, int key, int scancode, int action, int mods)
+{
 	Input::Instance()->m_key = key;
 
-	if(action == GLFW_RELEASE){
+	if (action == GLFW_RELEASE)
+	{
 		Input::Instance()->m_isKeyPressed = false;
 		Input::Instance()->m_key = 0;
-			
 	}
 
-	if(action == GLFW_PRESS) Input::Instance()->m_isKeyPressed = true;
+	if (action == GLFW_PRESS)
+		Input::Instance()->m_isKeyPressed = true;
 }
 
-void Input::MousePositionCallback(GLFWwindow* window, double xpos, double ypos){
+void Input::MousePositionCallback(GLFWwindow *window, double xpos, double ypos)
+{
 	Input::Instance()->m_mousePositionX = xpos;
 	Input::Instance()->m_mousePositionY = ypos;
 }
 
-void Input::MouseButtonCallback(GLFWwindow* window, int button, int action, int mods){
-	if(button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS){
+void Input::MouseButtonCallback(GLFWwindow *window, int button, int action, int mods)
+{
+	if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS)
+	{
 		Input::Instance()->m_isLeftButtonClicked = true;
-	} else {
+	}
+	else
+	{
 		Input::Instance()->m_isLeftButtonClicked = true;
 	}
 
-	if(button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS) {
+	if (button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS)
+	{
 		Input::Instance()->m_isRightButtonClicked = true;
-	} else {
+	}
+	else
+	{
 		Input::Instance()->m_isRightButtonClicked = true;
 	}
 }
