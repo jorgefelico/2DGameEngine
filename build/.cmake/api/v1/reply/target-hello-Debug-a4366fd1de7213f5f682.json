@@ -96,7 +96,8 @@
 				1,
 				2,
 				3,
-				4
+				4,
+				5
 			]
 		}
 	],
@@ -148,7 +149,8 @@
 				1,
 				2,
 				3,
-				4
+				4,
+				5
 			]
 		}
 	],
@@ -163,7 +165,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 1,
-			"path" : "main.cpp",
+			"path" : "Main.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -182,6 +184,12 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 1,
 			"path" : "Screen.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "Quad.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],
